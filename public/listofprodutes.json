@@ -1,0 +1,22 @@
+[
+  {
+    "id": "0a97ac42-c221-4647-b9b7-4a4a074f98f4",
+    "name": "Teapowder",
+    "price": 409.53
+  },
+  {
+    "id": "f6e3e6d7-fa75-4221-bc07-2255ce2fdb27",
+    "name": "coffee",
+    "price": 110
+  },
+  {
+    "id": "53e7892f-5297-4b5b-aebf-51db8f9cf997",
+    "name": "tea",
+    "price": 90
+  },
+  {
+    "id": "b79722d0-17cf-4752-89bf-c3a855c1acce",
+    "name": "biscuit",
+    "price": 10
+  }
+]
