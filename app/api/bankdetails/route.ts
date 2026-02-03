@@ -1,44 +1,42 @@
-export const runtime = "nodejs"; // Edge runtime
+export const runtime = "nodejs";
 
 import { NextResponse } from "next/server";
+import { readFile } from "fs/promises";
+import path from "path";
 
-// GET reads JSON from public folder
 export async function GET() {
   try {
-    // Fetch the static JSON from the public folder via the same origin.
-    // Uses NEXT_PUBLIC_BASE_URL for prod (full URL) or defaults to relative path for local dev.
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
-    const res = await fetch(`${baseUrl}/bankdetails.json`);
-    // Removed cache option to avoid compatibility issues in local dev; defaults to 'default' which works everywhere.
-    if (!res.ok) throw new Error("File not found");
-    const data = await res.json();
+    const filePath = path.join(process.cwd(), "public", "bankdetails.json");
+    const file = await readFile(filePath, "utf-8");
+    const data = JSON.parse(file);
+
     return NextResponse.json(data);
   } catch (err) {
-    console.error(err); // Logs errors for debugging (visible in Cloudflare/Edge logs)
-    return NextResponse.json({ error: String(err) }, { status: 404 });
+    console.error(err);
+    return NextResponse.json(
+      { error: "bankdetails.json not found" },
+      { status: 404 }
+    );
   }
 }
 
-// POST cannot write in Edge runtime
-export async function POST() {
+export function POST() {
   return NextResponse.json(
-    { error: "Cannot write in Edge runtime" },
-    { status: 500 }
+    { error: "Write not supported" },
+    { status: 405 }
   );
 }
 
-// PUT cannot update in Edge runtime
-export async function PUT() {
+export function PUT() {
   return NextResponse.json(
-    { error: "Cannot update in Edge runtime" },
-    { status: 500 }
+    { error: "Update not supported" },
+    { status: 405 }
   );
 }
 
-// DELETE cannot delete in Edge runtime
-export async function DELETE() {
+export function DELETE() {
   return NextResponse.json(
-    { error: "Cannot delete in Edge runtime" },
-    { status: 500 }
+    { error: "Delete not supported" },
+    { status: 405 }
   );
 }
