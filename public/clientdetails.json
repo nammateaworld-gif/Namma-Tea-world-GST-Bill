@@ -313,5 +313,14 @@
     "address": " Meenambal Rd, Kodungaiyur (East), Krishnamoorthy Nagar, Kodungaiyur, Chennai, Tamil Nadu 600118",
     "phone": "9789917244",
     "email": ""
+  },
+  {
+    "id": "90b54cc2-e2c4-476b-aa52-b590c82fdd5f",
+    "name": "testClient",
+    "gst": "0987655",
+    "fssai": "HFTYYHG5667",
+    "address": "test@",
+    "phone": "ue7373",
+    "email": "test@gmail.com"
   }
 ]
